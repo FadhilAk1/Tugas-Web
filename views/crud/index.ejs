@@ -1,0 +1,61 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Website Fadhil</title>
+</head>
+<body class="bg-slate-200">
+  <div>
+    <div class="grid m-10">
+      <div class="w-screen">
+        <div class="pl-96 ">
+          <a href="posts/create" class="px-6 py-3 text-blue-100 no-underline bg-blue-500 rounded 
+          hover:bg-blue-600 hover:underline hover:text-blue-200">TAMBAH DATA</a>
+        </div>
+      </div>
+
+      <div class="grid place-items-center m-10">
+        <table class="shadow-lg bg-white place-content-center">
+          <thead><th class="bg-blue-400 border text-center px-8 py-4">NO.</th>
+            <th class="bg-blue-400 border text-center px-8 py-4">NAMA</th>
+            <th class="bg-blue-400 border text-center px-8 py-4">NIM</th>
+            <th class="bg-blue-400 border text-center px-8 py-4">JURUSAN</th>
+            <th class="bg-blue-400 border text-center px-8 py-4">AKSI</th>
+          </thead>
+          <tbody>
+            <% if(data.length){
+              for(var i = 0; i< data.length; i++) {%>
+                  <tr>  
+                      <th class="border px-8 py-4"><%= (i+1) %></th>
+                      <td class="border px-8 py-4"><%= data[i].nama%></td>
+                      <td class="border px-8 py-4"><%= data[i].nim%></td>
+                      <td class="border px-8 py-4"><%= data[i].jurusan%></td>
+                      <td class="border flex items-center justify-between">
+                        <a href="/posts/edit/<%=data[i].id%>" class="m-2 px-4 py-2 text-white no-underline bg-green-400 rounded 
+                        hover:bg-green-600 hover:underline hover:text-blue-200">EDIT</a>
+                        <a onclick="return alert('Are You sure?')" href="/posts/delete/<%=data[i].id%>" class="mr-2 px-4 py-2 text-white no-underline bg-red-400 rounded 
+                        hover:bg-red-600 hover:underline hover:text-blue-200">DELETE</a>
+                      </td>
+                  </tr>
+              <% }
+              
+            }else{ %>
+                <tr>
+                    <td>
+                        <div class="bg-red-500">
+                            Data Tidak Ditemukan !
+                        </div>
+                    </td>
+                </tr>
+            <% } %>
+          </tbody>
+        </table>
+        
+
+      </div>
+    </div>
+  </div>
+</body>
+</html>
